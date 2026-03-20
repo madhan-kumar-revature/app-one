@@ -13,14 +13,14 @@ jobs:
     steps:
       - name: Trigger deployment repo
         run: |
-          curl -X POST \
-            -H "Authorization: Bearer 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" \
-            -H "Accept: application/vnd.github.v3+json" \
-            https://api.github.com/repos/madhan-kumar-revature/deployment/dispatches \
-            -d '{
+          curl --location 'https://api.github.com/repos/madhan-kumar-revature/deployment/dispatches' \
+            --header 'Accept: application/vnd.github.v3+json' \
+            --header 'Content-Type: application/json' \
+            --header 'Authorization: Bearer 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' \
+            --data '{
               "event_type": "deploy",
               "client_payload": {
-                "app_name": "${{ github.event.repository.name }}",
-                "commit_sha": "${{ github.sha }}"
+                "app_name": "app-one",
+                "commit_sha": "ad8c686d94099eae77d213a62b4e1796e3152d43"
               }
             }'
