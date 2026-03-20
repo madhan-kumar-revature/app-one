@@ -1,0 +1,14 @@
+name: Trigger Deployment
+run-name: ${{ github.sha}}
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  call-deploy:
+    uses: madhan-kumar-revature/deployment/.github/workflows/main.yml@main
+    with:
+      app_name: ${{ github.event.repository.name }}
+      commit_sha: ${{ github.sha }}
