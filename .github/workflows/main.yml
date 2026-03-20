@@ -21,13 +21,13 @@ jobs:
       - name: Trigger deployment repo (for visibility)
         run: |
           curl -X POST \
-            -H "Authorization: token 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" \
+            -H "Authorization: Bearer YOUR_TOKEN" \
             -H "Accept: application/vnd.github.v3+json" \
             https://api.github.com/repos/madhan-kumar-revature/deployment/dispatches \
             -d '{
               "event_type": "deploy",
               "client_payload": {
-                "app_name": "${{ github.event.repository.name }}",
-                "commit_sha": "${{ github.sha }}"
+                "app_name": "app-one",
+                "commit_sha": "ad8c686d94099eae77d213a62b4e1796e3152d43"
               }
             }'
