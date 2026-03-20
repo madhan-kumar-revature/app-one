@@ -16,11 +16,11 @@ jobs:
           curl --location 'https://api.github.com/repos/madhan-kumar-revature/deployment/dispatches' \
             --header 'Accept: application/vnd.github.v3+json' \
             --header 'Content-Type: application/json' \
-            --header 'Authorization: Bearer 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' \
+            --header 'Authorization: Bearer ${{ secrets.PAT_TOKEN }}' \
             --data '{
               "event_type": "deploy",
               "client_payload": {
-                "app_name": "app-one",
-                "commit_sha": "ad8c686d94099eae77d213a62b4e1796e3152d43"
+                "app_name": "${{ github.event.repository.name }}",
+                "commit_sha": "${{ github.sha }}"
               }
             }'
