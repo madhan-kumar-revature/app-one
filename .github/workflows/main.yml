@@ -7,11 +7,11 @@ on:
       - main
 
 jobs:
-  trigger-deploy:
+  trigger-deploy-dev:
     runs-on: ubuntu-latest
-
+    name: Dev
     steps:
-      - name: Trigger deployment repo
+      - name: Trigger deployment repo for Dev
         run: |
           curl --location 'https://api.github.com/repos/madhan-kumar-revature/deployment/dispatches' \
             --header 'Accept: application/vnd.github.v3+json' \
@@ -25,3 +25,22 @@ jobs:
                 "environment" : "dev"
               }
             }'
+
+  trigger-deploy-qa:
+    runs-on: ubuntu-latest
+    name: Qa
+    steps:
+      - name: Trigger deployment repo for Qa
+        run: |
+          curl --location 'https://api.github.com/repos/madhan-kumar-revature/deployment/dispatches' \
+            --header 'Accept: application/vnd.github.v3+json' \
+            --header 'Content-Type: application/json' \
+            --header 'Authorization: Bearer ${{ secrets.PAT_TOKEN }}' \
+            --data '{
+              "event_type": "deploy",
+              "client_payload": {
+                "app_name": "${{ github.event.repository.name }}",
+                "commit_sha": "${{ github.sha }}",
+                "environment" : "qa"
+              }
+            }'      
