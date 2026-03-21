@@ -23,6 +23,6 @@ jobs:
                 "app_name": "${{ github.event.repository.name }}",
                 "commit_sha": "${{ github.sha }}",
                 "deploy_dev": true,
-                "deploy_qa": true
+                "deploy_qa": false
               }
             }'
