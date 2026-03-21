@@ -21,6 +21,7 @@ jobs:
               "event_type": "deploy",
               "client_payload": {
                 "app_name": "${{ github.event.repository.name }}",
-                "commit_sha": "${{ github.sha }}"
+                "commit_sha": "${{ github.sha }}",
+                "environment" : "qa"
               }
             }'
