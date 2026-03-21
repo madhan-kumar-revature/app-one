@@ -22,6 +22,6 @@ jobs:
               "client_payload": {
                 "app_name": "${{ github.event.repository.name }}",
                 "commit_sha": "${{ github.sha }}",
-                "environment" : "qa"
+                "environment" : "dev"
               }
             }'
