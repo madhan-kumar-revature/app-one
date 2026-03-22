@@ -22,7 +22,7 @@ jobs:
               "client_payload": {
                 "app_name": "${{ github.event.repository.name }}",
                 "commit_sha": "${{ github.sha }}",
-                "deploy_dev": false,
+                "deploy_dev": true,
                 "deploy_qa": true
               }
             }'
